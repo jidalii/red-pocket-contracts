@@ -110,7 +110,7 @@
       (err ERR-500)
     )
   )
-)
+) 
 
 (define-public (claimRedPocket (index uint)) 
   (let
