@@ -145,6 +145,23 @@
   )
 )
 
+(define-public (distributeDirectly (amount (list 3 uint)) (addresses (list 3 principal))) 
+  (let 
+    (
+      (addr0 (unwrap! (element-at? addresses u0) (err ERR-500)))
+      (addr1 (unwrap! (element-at? addresses u1) (err ERR-500)))
+      (addr2 (unwrap! (element-at? addresses u2) (err ERR-500)))
+      (amount0 (unwrap! (element-at? amount u0) (err ERR-500)))
+      (amount1 (unwrap! (element-at? amount u1) (err ERR-500)))
+      (amount2 (unwrap! (element-at? amount u2) (err ERR-500)))
+    ) 
+    (unwrap-panic (stx-transfer? amount0 tx-sender addr0))
+    (unwrap-panic (stx-transfer? amount1 tx-sender addr1))
+    (unwrap-panic (stx-transfer? amount2 tx-sender addr2))
+    (ok "Done")
+  )
+)
+
 ;; read only functions
 ;;
 
